@@ -2,8 +2,8 @@ import AnaliseTable from "../components/analiseTable";
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
-     fetchAnalise, fetchSector, fetchArea,
-     searchByName 
+     fetchAnalise, fetchSector, fetchArea, searchByName, 
+     filterBySector , filterByArea, clearAreaData, nullAreaData, clearSectorData
     } from "../redux/slices/analiseSlice";
 
 const AnaliseProgresso = () => {
@@ -16,14 +16,12 @@ const AnaliseProgresso = () => {
     } = useSelector((state) => state.analise);
 
   const [searchAnalise, setSearchAnalise] = useState("");
+  const [sectorFilter, setSectorFilter] = useState("");
+  const [areaFilter, setAreaFilter] = useState("");
+  const [selectedSectorID, setSectorID] = useState("");
   
-    const filteredDataAnalise = 
-    searchAnalise
-    ?
-    filteredItems
-    :
-    dataAnalise;
-  
+  const filteredDataAnalise =  searchAnalise || sectorFilter || areaFilter 
+                                ? filteredItems : dataAnalise;
 
     useEffect(() => {
         dispatch(fetchAnalise()).then(() => {
@@ -35,14 +33,56 @@ const AnaliseProgresso = () => {
   // SEARCH HANDLE
   const handleSearchChange = (e) => {
     const value = e.target.value;
-    setSearchAnalise(value);
-    dispatch(searchByName(value)); 
+
+        setSearchAnalise(value);
+        dispatch(searchByName(value)); 
   };
 
-  useEffect(() => {
-    // setSearchAnalise(searchAnalise); // Update local state when Redux state changes
-  }, [searchAnalise]);
-  
+  // SECTOR HANDLE
+  const handleSectorChange = (e) =>{
+    const value = e.target.value; 
+    setAreaFilter('');
+
+    if(value && value!='cancel'){
+        const selectedOption = e.target.selectedOptions[0];  
+        const sectorID = selectedOption.getAttribute("data-key");
+        setSectorID(sectorID);
+        
+        dispatch(clearAreaData(value));
+
+        dispatch(filterBySector(value)); 
+        dispatch(fetchArea(sectorID))
+        setSectorFilter(value); 
+
+    } else {
+        setSectorFilter('');
+    }
+
+    if(value=='cancel'){
+        dispatch(clearAreaData(value));
+        dispatch(nullAreaData(value));
+        dispatch(clearSectorData(value));
+    }
+    
+  }
+
+  // AREA HANDLE
+  const handleAreaChange = (e) =>{
+    const value = e.target.value;
+
+    if(value && value!='cancel'){
+        dispatch(filterByArea(value)); 
+        setAreaFilter(value);
+        // console.log(dataSector.data.data[0]);
+    } else {
+        setAreaFilter('');
+    }
+
+    if(value=='cancel'){
+        dispatch(clearAreaData(value));
+    }
+  }
+
   return (
     <div className="page-container">
       <h1 className="text-left">Análises - Progresso</h1>
@@ -61,22 +101,33 @@ const AnaliseProgresso = () => {
             />
             </div>
     
-            <div className="col-3">
-            {dataSector &&
-            <select 
-            className="form-control bg-dark text-light dark-input"> 
-            {/* // value={selectedFilter} onChange={handleSelectChange} */}
-            <option disabled selected>Selecione o sector</option>
-            <option value="">- Nenhum</option>
+            <div className="col-3">    
+                <select className="form-control bg-dark text-light dark-input"
+                value={sectorFilter} onChange={handleSectorChange} >
+                    <option disabled value={""} selected>Selecione o sector</option>
+
+                { dataSector?.data?.data?.map( (sector) => (
+                <option data-key={sector.id} key={sector.id}
+                         value={sector.name} >{sector.name}</option>   
+                )
+                )}
+
+                    <option value={"cancel"}>TUDO</option>
+                </select>
+             </div>
     
-            { dataSector?.data?.map( (sector, index) => (
-             <option key={sector.id} value={sector.name}>{sector}</option>   
-            )
-            )}
+            <div className="col-3">    
+                <select className="form-control bg-dark text-light dark-input"
+                value={areaFilter} onChange={handleAreaChange} >
+                <option disabled value={""} selected>Selecione a ârea</option>
 
-            </select>
-            }
+                { dataArea?.data?.map( (area) => (
+                <option key={area.id} value={area.name}>{area.name}</option>   
+                )
+                )}
 
+                <option value={"cancel"}>TUDO</option>
+                </select>
             </div>
     
         </div>
