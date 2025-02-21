@@ -22,20 +22,6 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  /* display: flex; */
-  place-items: left;
-  background-color: #262217!important;
-  /* min-width: 320px; */
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 1.8rem;
-  line-height: 2.3rem;
-  text-align: left;
-}
 
 button {
   border-radius: 8px;
