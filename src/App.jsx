@@ -9,7 +9,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/analise-progresso" element={<WeeklyTasksReport />} />
-        {/* <Route path="/other-data" element={<OtherDataReport />} /> */}
       </Routes>
     </Router>
   );

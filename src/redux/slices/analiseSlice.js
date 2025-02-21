@@ -42,17 +42,7 @@ const analiseSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       });
-      // .addCase(fetchOtherData.pending, (state) => {
-      //   state.loading = true;
-      // })
-      // .addCase(fetchOtherData.fulfilled, (state, action) => {
-      //   state.loading = false;
-      //   state.otherData = action.payload;
-      // })
-      // .addCase(fetchOtherData.rejected, (state, action) => {
-      //   state.loading = false;
-      //   state.error = action.error.message;
-      // });
+  
   },
 });
 
