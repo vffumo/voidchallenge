@@ -85,3 +85,13 @@ input::placeholder {
 option[disabled] {
   color: #888888!important; 
 }
+
+.text-left-all, .text-left-all * {
+  text-align: left!important;
+}
+ul {
+  list-style: none!important;
+  margin-left: 0;
+  padding-left: 0;
+}
+
