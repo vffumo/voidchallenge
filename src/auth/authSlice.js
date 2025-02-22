@@ -26,6 +26,7 @@ export const logoutUser = createAsyncThunk('auth/logoutUser', async () => {
 });
 
 export const checkAuthStatus = createAsyncThunk('auth/checkAuthStatus', async (_, { rejectWithValue }) => {
+  console.log('RUNNNNNN > auth');
   try {
     const token = Cookies.get('token');
 
@@ -34,11 +35,13 @@ export const checkAuthStatus = createAsyncThunk('auth/checkAuthStatus', async (_
     }
 
     // Verify token with API (optional)
-    const response = await api.get('/sectors/all/de190ded-d23c-410c-89ac-89faf4dfb36a', {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    // const response = await api.get('/sectors/all/de190ded-d23c-410c-89ac-89faf4dfb36a', {
+    //   headers: { Authorization: `Bearer ${token}` },
+    // });
 
-    return { user: response.data, status: 'loggedIn' };
+    // return { user: response.data, status: 'loggedIn' };
+
+    return { user: null, status: 'loggedIn' };
   } catch (error) {
     Cookies.remove('token'); // Remove invalid token
     return rejectWithValue('Session expired');
@@ -64,8 +67,8 @@ const authSlice = createSlice({
       })
       .addCase(checkAuthStatus.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.status = action.payload.status;
-        // state.status = 'loggedIn';
+        // state.status = action.payload.status;
+        state.status = 'loggedIn';
       })
       .addCase(checkAuthStatus.rejected, (state) => {
         state.user = null;

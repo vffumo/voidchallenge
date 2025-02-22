@@ -6,6 +6,7 @@ import {
     clearAreaData, nullAreaData, clearSectorData,
     filterInsumoBySector, filterInsumoByArea
     } from "../redux/slices/analiseInsumoSlice";
+import { SpinnerLoading } from '../components/parts/spinner';
 
 const InsumosPage = () => {
 
@@ -135,7 +136,7 @@ const InsumosPage = () => {
         </div>
         {
             (loading)?
-            <p>Loading...</p>
+            <SpinnerLoading />
             : (
                 (error)?
                 <p>Error: {error}</p>

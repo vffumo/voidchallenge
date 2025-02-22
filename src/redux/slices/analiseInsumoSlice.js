@@ -58,7 +58,7 @@ const analiseInsumoSlice = createSlice({
     dataSearch: [],
     dataFilter: [],
     // otherData: [],
-    loading: false,
+    loading: true,
     error: null,
     status: 'idle',
     searchTerm: "", sectorFilter: "", areaFilter: "",

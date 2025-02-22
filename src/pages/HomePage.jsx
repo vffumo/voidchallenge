@@ -3,10 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import api from '../services/api';
+import { SpinnerLoading } from '../components/parts/spinner';
 
 const Home = () => {
 //   const { user } = useSelector((state) => state.auth);
- 
+  // const { loading} = useSelector((state) => state.analiseInsumo);
+  const { status } = useSelector((state) => state.auth);
+
+      if (status === 'loading' || !status) {
+        return <SpinnerLoading />;
+      }
+
   return (
     <div className="page-container text-left-all">
       <div className="w-100 mt-1">
@@ -30,7 +37,7 @@ const Home = () => {
         </div>
          
       </div>
-    </div>
+    </div>    
   );
 };
 

@@ -28,8 +28,8 @@ api.interceptors.response.use(
       Cookies.remove("token");
       delete api.defaults.headers["Authorization"];
 
-      // Dispatch logout action
-      store.dispatch(logoutUser());
+      // Dispatch logout action PS: ###### THI CAUSED 'store is undefined error' #####
+      // store.dispatch(logoutUser());
 
       // Optional: Redirect to login (if using window.location)
       window.location.href = "/login";

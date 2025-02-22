@@ -5,6 +5,7 @@ import {
      fetchAnalise, fetchSector, fetchArea, searchByName, 
      filterBySector , filterByArea, clearAreaData, nullAreaData, clearSectorData
     } from "../redux/slices/analiseInsumoSlice";
+import { SpinnerLoading } from "../components/parts/spinner";
 
 const AnalisePage = () => {
 
@@ -29,6 +30,7 @@ const AnalisePage = () => {
           dispatch(fetchSector())
         });
       }, [dispatch]);
+
 
   // SEARCH HANDLE
   const handleSearchChange = (e) => {
@@ -135,7 +137,7 @@ const AnalisePage = () => {
         </div>
         {
             (loading)?
-            <p>Loading...</p>
+            <SpinnerLoading />
             : (
                 (error)?
                 <p>Error: {error}</p>

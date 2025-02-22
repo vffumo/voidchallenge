@@ -6,7 +6,7 @@ const store = configureStore({
   reducer: {
     auth: authSlice.reducer, 
     analiseInsumo: analiseInsumoSlice.reducer, 
-  },
+  }, 
 });
 
 export default store;

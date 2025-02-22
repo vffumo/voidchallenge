@@ -7,7 +7,7 @@ const AnaliseTable = ({ dataFilter }) => {
   const filteredDataAnalise = dataFilter;
   const [ sumTotal, setSumTotal] = useState([])
 
-  console.log(filteredDataAnalise);
+  // console.log(filteredDataAnalise);
 
   // CALCULATE TOTAL
   function calculateTotal() {

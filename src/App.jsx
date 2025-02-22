@@ -8,6 +8,7 @@ import Home from './pages/HomePage';
 import AnalisePage from "./pages/AnalisePage";
 import InsumosPage from "./pages/InsumosPage";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { SpinnerLoading } from './components/parts/spinner';
 import './App.css';
 
 const App = () => {
@@ -28,7 +29,7 @@ const App = () => {
 
     // Handle loading state
     if (status === 'loading' || !status) {
-      return <div className="loading-screen">Loading...</div>;
+      return <SpinnerLoading />;
     }
   
   return (
