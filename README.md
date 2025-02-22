@@ -29,6 +29,8 @@ http://localhost:5173/Login/ **Auto Login**
 
 ![image](https://github.com/user-attachments/assets/b1c48aff-bcba-42a0-b2b8-479cef66ad95)
 
+![image](https://github.com/user-attachments/assets/267d485f-d4c8-45a3-8a8e-3cefd1929547)
+
 ![image](https://github.com/user-attachments/assets/550a7380-f872-4390-97b4-bd5e1f169e38)
 
 ![image](https://github.com/user-attachments/assets/7ee0d24c-7dd3-43ef-83b4-124083edab49)
