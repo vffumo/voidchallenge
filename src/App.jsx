@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer } from 'react-toastify';
+import { checkAuthStatus } from './features/authSlice';
 import Login from './pages/LoginPage';
 import Home from './pages/HomePage';
 import AnalisePage from "./pages/AnalisePage";
 import InsumosPage from "./pages/InsumosPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import { ToastContainer } from 'react-toastify';
-import { checkAuthStatus } from './features/authSlice';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,11 @@ const App = () => {
     }
   }, [status, navigate]);
 
+    // Handle loading state
+    if (status === 'loading' || !status) {
+      return <div className="loading-screen">Loading...</div>;
+    }
+  
   return (
     <>
       <ToastContainer position="top-right" autoClose={2000} />

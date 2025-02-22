@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import analiseInsumoSlice from "./slices/analiseInsumoSlice";
 import authSlice from "../features/authSlice"
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     auth: authSlice.reducer, 
     analiseInsumo: analiseInsumoSlice.reducer, 
