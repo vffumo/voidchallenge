@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../services/api";
 
 export const fetchAnalise = createAsyncThunk(
-  "analise/fetchAnalise",
+  "analiseInsumo/fetchAnalise",
   async () => {
      const response = await api.get("/last-week/de190ded-d23c-410c-89ac-89faf4dfb36a?=&_limit=10");
     //  console.log(response.data);
@@ -11,7 +11,7 @@ export const fetchAnalise = createAsyncThunk(
 );
 
 export const fetchInsumo = createAsyncThunk(
-  "analise/fetchInsumo",
+  "analiseInsumo/fetchInsumo",
   async () => {
      const response = await api.get("/analytics/farm-inputs/23e9336a-b20a-4478-a58f-875cc065e871?offset=1&limit=10?&filter=&phase=nurseries");
     //  console.log(response.data);
@@ -21,7 +21,7 @@ export const fetchInsumo = createAsyncThunk(
 
 
 export const fetchSector = createAsyncThunk(
-  "analise/fetchSector",
+  "analiseInsumo/fetchSector",
   async () => {
      const response = await api.get("/sectors/all/de190ded-d23c-410c-89ac-89faf4dfb36a");
     //  console.log(response.data);
@@ -30,7 +30,7 @@ export const fetchSector = createAsyncThunk(
 );
 
 export const fetchArea = createAsyncThunk(
-  "analise/fetchArea",
+  "analiseInsumo/fetchArea",
   async (sectorID, { rejectWithValue }) => {
     try {
       const response = await api.get(`/areas?&sector=${sectorID}`);
@@ -43,7 +43,7 @@ export const fetchArea = createAsyncThunk(
 );
 
 
-const analiseInsumo = createSlice({
+const analiseInsumoSlice = createSlice({
   name: "analiseInsumo",
   initialState: {
     
@@ -144,7 +144,7 @@ const analiseInsumo = createSlice({
       //   }
       // };
 
-      analiseInsumo.caseReducers.filterFinalHandler(state, { });
+      analiseInsumoSlice.caseReducers.filterFinalHandler(state, { });
     },
 
     // Filter
@@ -152,7 +152,7 @@ const analiseInsumo = createSlice({
       const query = action.payload.trim().toLowerCase();
       state.sectorFilter = query;
 
-      analiseInsumo.caseReducers.filterFinalHandler(state, { });
+      analiseInsumoSlice.caseReducers.filterFinalHandler(state, { });
     },
 
     
@@ -160,40 +160,40 @@ const analiseInsumo = createSlice({
       const query = action.payload.trim().toLowerCase();
       state.areaFilter = query;
       
-      analiseInsumo.caseReducers.filterFinalHandler(state, { });
+      analiseInsumoSlice.caseReducers.filterFinalHandler(state, { });
     },
 
     clearAreaData: (state, action) =>  {
       state.areaFilter='';
       // state.dataArea=[];
       
-      analiseInsumo.caseReducers.filterFinalHandler(state, { });
+      analiseInsumoSlice.caseReducers.filterFinalHandler(state, { });
     },
 
     nullAreaData: (state, action) =>  {
       state.areaFilter='';
       state.dataArea=[];
       
-      analiseInsumo.caseReducers.filterFinalHandler(state, { });
+      analiseInsumoSlice.caseReducers.filterFinalHandler(state, { });
     },
 
     clearSectorData: (state, action) => {
       state.sectorFilter=''; 
       state.areaFilter='';
       
-      analiseInsumo.caseReducers.filterFinalHandler(state, { });
+      analiseInsumoSlice.caseReducers.filterFinalHandler(state, { });
     },
 
     // INSUMOS REDUCERS -----------------------------------
     filterInsumoBySector: (state, action) => {
       const query = action.payload.trim().toLowerCase();
       state.sectorFilter = query;
-      analiseInsumo.caseReducers.filterInsumoFinalHandler(state, { });
+      analiseInsumoSlice.caseReducers.filterInsumoFinalHandler(state, { });
     },    
     filterInsumoByArea: (state, action) => {
       const query = action.payload.trim().toLowerCase();
       state.areaFilter = query;
-      // analiseInsumo.caseReducers.filterInsumoFinalHandler(state, { });
+      // analiseInsumoSlice.caseReducers.filterInsumoFinalHandler(state, { });
     },
     // Final Insumo Handler
     filterInsumoFinalHandler: (state, action) => {
@@ -281,6 +281,6 @@ export const {
        searchByName,filterBySector, filterByArea, 
        clearAreaData, nullAreaData, clearSectorData,
        filterInsumoBySector, filterInsumoByArea 
-      } = analiseInsumo.actions;
+      } = analiseInsumoSlice.actions;
 
-export default analiseInsumo.reducer;
+export default analiseInsumoSlice;

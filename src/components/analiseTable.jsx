@@ -7,6 +7,8 @@ const AnaliseTable = ({ dataFilter }) => {
   const filteredDataAnalise = dataFilter;
   const [ sumTotal, setSumTotal] = useState([])
 
+  console.log(filteredDataAnalise);
+
   // CALCULATE TOTAL
   function calculateTotal() {
     let totalInner = [];
@@ -20,11 +22,12 @@ const AnaliseTable = ({ dataFilter }) => {
         if (!totalInner[indexWeek]) {
           totalInner[indexWeek] = { start: week.total_records, final: countSingleTasks }; 
           //  Ya.. Initialze the week
+        } else {
+          // Update da start and final values
+          totalInner[indexWeek].start += week.total_records;
+          totalInner[indexWeek].final += countSingleTasks; // Only add for the current week
         }
   
-        // Update da start and final values
-        totalInner[indexWeek].start += week.total_records;
-        totalInner[indexWeek].final += countSingleTasks; // Only add for the current week
       });
     });
   
@@ -61,17 +64,17 @@ const AnaliseTable = ({ dataFilter }) => {
         {filteredDataAnalise?.data?.technicians?.map((record, index) => {
           let countSingleTasks =0;
           return (
-            <tr key={index}>
+            <tr key={`week-row-item-${index}`}>
               <td >{record.sector}</td>
               <td>{record.area_name}</td>
               <td>{record.technician_name}</td>
           
-              {record.weeks?.map((week, index) => {
+              {record.weeks?.map((weekInner, weekIndex) => {
                 
-                countSingleTasks+=week.total_records;
+                countSingleTasks+=weekInner.total_records;
       
                 return (
-                  <td key={index}>{week.total_records} <span className="divider-item">|</span> <strong>{countSingleTasks}</strong></td>  
+                  <td key={`week-item-${weekIndex}`}>{weekInner.total_records} <span className="divider-item">|</span> <strong>{countSingleTasks}</strong></td>  
                 );
               })}
           
