@@ -14,7 +14,10 @@ By Vayile Fumo
 "I've implemented an Auto Login feature because I noticed that the token expires after a few hours. Without this feature, you would need to constantly log in using API consumption tools to obtain a new token. Alternatively, generating a new token with each session would be inefficient and would create unnecessary overhead, which is considered a bad practice."
 
 # READY TOGO
-Just run>>  **npm run dev**
+Just run>>  
+**npm install**
+And then>>  
+**npm run dev**
 
 # LINK (locally)
 http://localhost:5173 **Home Page**
