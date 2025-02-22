@@ -1,8 +1,25 @@
-# React + Vite
+# Void Challenge
+By Vayile Fumo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Void Challenge** built with React and Vite.
 
-Currently, two official plugins are available:
+**PROJECT OVERVIEW**
+**Frontend:** React (v18) + Vite (Build Tool)
+**State Management:** Redux ( for global state management)Wich allowed me to have a structered project, scallable and with reusuble, complex areduntant cenarious.
+**API Communication:** Axios (for making HTTP requests)
+**CSS Framework:** Bootstrap (for responsive design)
+**Routing:** React Router (for handling page navigation)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# EXTRA INFO
+"I've implemented an Auto Login feature because I noticed that the token expires after a few hours. Without this feature, you would need to constantly log in using API consumption tools to obtain a new token. Alternatively, generating a new token with each session would be inefficient and would create unnecessary overhead, which is considered a bad practice."
+
+# READY TOGO
+Just run>>  **npm run dev**
+
+# LINK (locally)
+http://localhost:5173 **Home Page**
+http://localhost:5173/analise-progresso/ **Analise Progresso**
+http://localhost:5173/insumos/ **Insumos**
+
+http://localhost:5173/Login/ **Auto Login**
+

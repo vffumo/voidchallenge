@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import analiseReducer from "./slices/analiseSlice";
+import analiseInsumoReducer from "./slices/analiseInsumoSlice";
+import authReducer from "../features/authSlice"
 
 export const store = configureStore({
-  reducer: {   analise: analiseReducer,  },
+  reducer: {
+    auth: authReducer,
+    analiseInsumo: analiseInsumoReducer, 
+  },
 });
 
 export default store;

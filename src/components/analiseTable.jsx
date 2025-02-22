@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAnalise } from "../redux/slices/analiseSlice";
 import { Table, Container } from "react-bootstrap";
 // import { data } from "react-router-dom";
 
@@ -37,7 +35,7 @@ const AnaliseTable = ({ dataFilter }) => {
   
   useEffect(() => {
     calculateTotal();
-  }, [filteredDataAnalise]); // Trigger when filteredDataAnalise changes
+  }, [filteredDataAnalise]); 
  
   return (
     <>
@@ -63,7 +61,7 @@ const AnaliseTable = ({ dataFilter }) => {
         {filteredDataAnalise?.data?.technicians?.map((record, index) => {
           let countSingleTasks =0;
           return (
-            <tr key={record.week_start}>
+            <tr key={index}>
               <td >{record.sector}</td>
               <td>{record.area_name}</td>
               <td>{record.technician_name}</td>

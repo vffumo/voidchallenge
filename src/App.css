@@ -23,9 +23,22 @@ h1 {
   text-align: left;
   margin-top: 10px;
   margin-bottom: 40px;
+  font-weight: 700!important;
+  color: #e4e4e4!important;
+}
+p.spaced-p {
+  letter-spacing: 10px; 
+  font-size: 1.4rem;
+  font-weight: 300!important;
+}
+h4 {
+  font-size: 1.2rem;
+  line-height: 1.3rem;
+  text-align: left;  
+  margin-top: 10px;
+  font-weight: 650!important;
   color: #e4e4e4!important;;
 }
-
 .styled-table-scope{
   border-radius: 15px;
   border: 0.5px solid #444!important;
@@ -42,6 +55,14 @@ h1 {
   padding: 18px 10px!important;
   min-width: 200px!important;
 }
+
+.styled-table-scope-insumos th,
+.styled-table-scope-insumos td { 
+  padding: 15px 10px!important;
+  min-width: 150px!important;
+}
+
+
 strong {
   /* font-weight: 700; */
 }
@@ -49,6 +70,14 @@ strong {
   font-weight: 500;
   font-size: .97rem;
   color: #e4e4e4;
+}
+.styled-table-scope-insumos th {
+  font-weight: 750;
+  font-size: .93rem;
+  text-transform: uppercase;
+}
+.styled-table-scope-insumos th.th-capital{
+  text-transform: capitalize;
 }
 .styled-table td{ 
   font-size: .9rem;
@@ -61,7 +90,11 @@ strong {
   padding: 18px 15px 18px 0!important;
   min-width: 200px!important;
 }
-
+.styled-table-scope-insumos th:nth-of-type(1),
+.styled-table-scope-insumos td:nth-of-type(1) { 
+  padding: 15px 10px 15px 0!important;
+  min-width: 200px!important;
+}
 .dark-input {
   background-color: #333;
   color: #fff;
@@ -95,3 +128,27 @@ ul {
   padding-left: 0;
 }
 
+.scope-page-insumos, table{
+  background-color: #1a1b1d!important;
+  border-radius: 15px;
+}
+.table-dark {
+  --bs-table-color: #fff;
+  --bs-table-bg:  #1a1b1d!important;
+}
+.styled-table-scope.styled-table-scope-insumos {
+  border-color: transparent!important;
+}
+
+li a  {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.welcome-header {
+  color: #e4e4e4!important;
+  font-size: 4.33rem;
+  line-height: 6rem;
+  margin-bottom: 10px!important;
+}
